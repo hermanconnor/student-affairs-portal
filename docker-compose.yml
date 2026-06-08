@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: student_affairs
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d student_affairs"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: builder # Crucial: Stays in the stage containing devDependencies (tsx)
+    command: npm run dev # Overrides the production runner's CMD
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    environment:
+      PORT: 3001
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/student_affairs
+    depends_on:
+      postgres:
+        condition: service_healthy # Waits until the DB is actually listening
+    volumes:
+      - ./backend:/app # Mounts code changes dynamically
+      - /app/node_modules # Prevents local node_modules from breaking container packages
+
+volumes:
+  postgres_data:

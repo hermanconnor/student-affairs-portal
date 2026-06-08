@@ -20,20 +20,20 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-      target: builder # Crucial: Stays in the stage containing devDependencies (tsx)
-    command: npm run dev # Overrides the production runner's CMD
+      target: builder # Keeps devDependencies (tsx watch) accessible
+    command: npm run dev
     restart: unless-stopped
     ports:
-      - '3001:3001'
+      - '5000:5000' # Maps host port 5000 to container port 5000
     environment:
-      PORT: 3001
+      PORT: 5000
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/student_affairs
     depends_on:
       postgres:
-        condition: service_healthy # Waits until the DB is actually listening
+        condition: service_healthy # Prevents race conditions during DB boot
     volumes:
-      - ./backend:/app # Mounts code changes dynamically
-      - /app/node_modules # Prevents local node_modules from breaking container packages
+      - ./backend:/app # Tracks local file changes dynamically
+      - /app/node_modules # Protects container binaries from host file clobbering
 
 volumes:
   postgres_data:

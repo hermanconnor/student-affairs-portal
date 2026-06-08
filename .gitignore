@@ -6,6 +6,8 @@ node_modules/
 .npm
 .eslintcache
 .stylelintcache
+.cache/
+**/.cache/
 
 # ==========================================
 # 2. Build Outputs (Express, Vite, Next.js)
@@ -19,7 +21,7 @@ build/
 out/
 **/out/
 
-# Next.js specific build files
+# Next.js specific build files (Kept for future-proofing)
 .next/
 **/.next/
 next-env.d.ts
@@ -35,6 +37,11 @@ next-env.d.ts
 .env*.local
 !.env.example
 *.pem
+
+# Docker local secrets/override configurations
+.env.docker
+.env.production
+.env.development
 
 # Vercel deployment tracking
 .vercel
@@ -74,5 +81,7 @@ Thumbs.db
 # ==========================================
 .vite/
 **/.vite/
+.vitest/
+**/.vitest/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*

@@ -1,0 +1,40 @@
+# Local dependencies (Docker must install these fresh)
+node_modules
+**/node_modules
+
+# Local build outputs
+dist
+**/dist
+build
+**/build
+.next
+out
+
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+
+# Docker configuration files (Not needed inside the image build context)
+docker-compose*.yml
+.dockerignore
+
+# Git, CI/CD, and IDE configuration files
+.git
+.github
+.gitignore
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

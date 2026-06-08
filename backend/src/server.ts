@@ -1,12 +1,7 @@
-import express from 'express';
+import app from './app.js';
+import { env } from './config/env.js';
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-// Health check
-app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
+const PORT = env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`API running on http://localhost:${PORT}`);

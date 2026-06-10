@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
     // File Layout
-    "rootDir": "src",
+    "rootDirs": ["src"],
     "outDir": "dist",
 
     // Environment Settings
-    "module": "nodenext",
+    "module": "esnext",
     "target": "esnext",
     "lib": ["esnext"],
     "types": ["node"],
+    "moduleResolution": "bundler",
 
     // Other Outputs
     "sourceMap": true,
@@ -35,6 +36,6 @@
     "skipLibCheck": true
   },
 
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "drizzle.config.ts"],
   "exclude": ["node_modules", "dist"]
 }

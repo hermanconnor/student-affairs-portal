@@ -1,6 +1,6 @@
 import { pgTable, text, timestamp, boolean, unique } from 'drizzle-orm/pg-core';
-import { user } from './user';
-import { event } from './event';
+import { user } from './user.js';
+import { event } from './event.js';
 
 export const registration = pgTable(
   'registration',

@@ -1,5 +1,5 @@
-import type { User } from '../schema/index';
-import type { BetterAuthUser } from '../../lib/auth';
+import type { User } from '../schema/index.js';
+import type { BetterAuthUser } from '../../lib/auth.js';
 
 export interface UserDTO {
   id: string;

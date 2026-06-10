@@ -5,11 +5,12 @@
     "outDir": "dist",
 
     // Environment Settings
-    "module": "esnext",
+    "module": "nodenext",
     "target": "esnext",
+    "moduleResolution": "nodenext",
     "lib": ["esnext"],
     "types": ["node"],
-    "moduleResolution": "bundler",
+    "esModuleInterop": true,
 
     // Other Outputs
     "sourceMap": true,
@@ -17,7 +18,6 @@
     "declarationMap": true,
 
     // Stricter Typechecking Options
-    "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
@@ -29,6 +29,7 @@
     "forceConsistentCasingInFileNames": true,
 
     // Recommended Options
+    "strict": true,
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,

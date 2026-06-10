@@ -1,9 +1,9 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { db } from '../db/index';
-import { env } from '../config/env';
-import * as schema from '../db/schema/index';
-import type { Role } from '../db/schema/index';
+import { db } from '../db/index.js';
+import { env } from '../config/env.js';
+import * as schema from '../db/schema/index.js';
+import type { Role } from '../db/schema/index.js';
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {

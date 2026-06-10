@@ -1,6 +1,6 @@
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
-import { user } from './user';
-import { request } from './request';
+import { user } from './user.js';
+import { request } from './request.js';
 
 export const requestComment = pgTable('request_comment', {
   id: text('id').primaryKey(),

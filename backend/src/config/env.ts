@@ -17,6 +17,14 @@ const envSchema = z.object({
   CLIENT_URL: z.url({
     error: 'Must be a valid web frontend URL',
   }),
+
+  BETTER_AUTH_SECRET: z.string().min(32, {
+    message: 'Must be at least 32 characters long',
+  }),
+
+  BETTER_AUTH_URL: z.url({
+    message: 'Must be a valid URL',
+  }),
 });
 
 const result = envSchema.safeParse(process.env);

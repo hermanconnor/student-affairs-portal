@@ -1,6 +1,6 @@
 import express, { type Application } from 'express';
 import cors from 'cors';
-import { env } from './config/env.js';
+import { env } from './config/env';
 
 const app: Application = express();
 

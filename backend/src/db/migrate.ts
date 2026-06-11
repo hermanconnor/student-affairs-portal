@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import postgres from 'postgres';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import { migrate } from 'drizzle-orm/postgres-js/migrator';
-import { env } from '../config/env';
+import { env } from '../config/env.js';
 
 // Safely derive the absolute path to the migrations folder, regardless of execution directory
 const __filename = fileURLToPath(import.meta.url);

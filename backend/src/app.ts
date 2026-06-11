@@ -1,6 +1,8 @@
 import express, { type Application } from 'express';
 import cors from 'cors';
-import { env } from './config/env';
+import { toNodeHandler } from 'better-auth/node';
+import { auth } from './lib/auth.js';
+import { env } from './config/env.js';
 
 const app: Application = express();
 
@@ -10,6 +12,10 @@ app.use(
     credentials: true,
   }),
 );
+
+// Mount Better-Auth — must come BEFORE express.json()
+app.all('/api/auth/*splat', toNodeHandler(auth));
+
 app.use(express.json());
 
 // Health check
